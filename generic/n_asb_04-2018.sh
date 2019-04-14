@@ -1,48 +1,47 @@
 #!/bin/bash
 cd ../../../../..
 cd build
-git apply --check < ../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/build/5d2a208.diff
+git fetch https://github.com/LineageOS/android_build refs/changes/59/212459/1 && git cherry-pick FETCH_HEAD
 cd ..
 cd external/aac
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/external_aac/c75adf7.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/external_aac/da8176d.diff
+git fetch https://github.com/LineageOS/android_external_aac refs/changes/14/211314/1 && git cherry-pick FETCH_HEAD
 cd ../..
 cd external/libavc
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/external_libavc/c75adf7.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/external_libavc/da8176d.diff
+git fetch https://github.com/LineageOS/android_external_libavc refs/changes/16/211316/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_external_libavc refs/changes/15/211315/1 && git cherry-pick FETCH_HEAD
 cd ../..
 cd external/libhevc
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/external_libhevc/80d2511.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/external_libhevc/fbf3c39.diff
+git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/18/211318/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/17/211317/1 && git cherry-pick FETCH_HEAD
 cd ../..
 cd frameworks/av
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/frameworks_av/5ae13b7.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/frameworks_av/20f0601.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/frameworks_av/56b25bf.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/frameworks_av/4809194.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/frameworks_av/ddefde0.diff
+git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/19/211319/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/20/211320/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/21/211321/2 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/22/211322/2 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/36/211436/1 && git cherry-pick FETCH_HEAD
 cd ../..
 cd frameworks/base
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/frameworks_base/1ca819a.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/frameworks_base/090de27.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/frameworks_base/890d448.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/frameworks_base/fafc170.diff
+git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/24/211324/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/25/211325/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/26/211326/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/27/211327/1 && git cherry-pick FETCH_HEAD
 cd ../..
 cd frameworks/ex
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/frameworks_ex/563f1c3.diff
+git fetch https://github.com/LineageOS/android_frameworks_ex refs/changes/28/211328/1 && git cherry-pick FETCH_HEAD
 cd ../..
 cd system/bt
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/system_bt/7f63160.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/system_bt/57ca41c.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/system_bt/648fe19.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/system_bt/b4edda5.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/system_bt/dfba2a4.diff
-git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/system_bt/e50c514.diff
+git fetch https://github.com/LineageOS/android_system_bt refs/changes/44/211444/5 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_system_bt refs/changes/43/211443/5 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_system_bt refs/changes/42/211442/5 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_system_bt refs/changes/41/211441/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_system_bt refs/changes/40/211440/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_system_bt refs/changes/39/211439/1 && git cherry-pick FETCH_HEAD
 cd ../..
 cd packages/apps/Email
-git apply --check < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/packages_apps_Email/b3978f1.diff
+git fetch https://github.com/LineageOS/android_packages_apps_Email refs/changes/29/211329/1 && git cherry-pick FETCH_HEAD
 cd ../../..
 cd packages/apps/UnifiedEmail
-git apply --check < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/packages_apps_UnifiedEmail/ec01df7.diff
+git fetch https://github.com/LineageOS/android_packages_apps_UnifiedEmail refs/changes/30/211330/1 && git cherry-pick FETCH_HEAD
 cd ../../..
-git apply --check < device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/8af970f.diff
+git fetch https://github.com/LineageOS/android refs/changes/48/212448/1 && git cherry-pick FETCH_HEAD
