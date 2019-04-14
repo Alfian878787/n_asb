@@ -39,4 +39,10 @@ cd ../..
 #git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/system_bt/dfba2a4.diff
 #git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/system_bt/e50c514.diff
 #cd ../..
+#cd packages/apps/Email
+#git apply --check < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/packages_apps_Email/b3978f1.diff
+#cd ../../..
+#cd packages/apps/UnifiedEmail
+#git apply --check < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/packages_apps_UnifiedEmail/ec01df7.diff
+#cd ../../..
 #git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/8af970f.diff
