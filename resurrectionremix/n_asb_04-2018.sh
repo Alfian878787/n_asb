@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ../../../..
+cd ../../../../..
 cd build
 git apply --check < ../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/build/5d2a208.diff
 cd ..
@@ -45,4 +45,4 @@ cd ../..
 #cd packages/apps/UnifiedEmail
 #git apply --check < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/packages_apps_UnifiedEmail/ec01df7.diff
 #cd ../../..
-#git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/8af970f.diff
+#git apply --check < device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/8af970f.diff

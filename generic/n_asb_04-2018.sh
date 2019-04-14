@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ../../../..
+cd ../../../../..
 cd build
 git apply --check < ../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_04-2018/build/5d2a208.diff
 cd ..
