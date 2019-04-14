@@ -3,7 +3,7 @@ cd ../../../../..
 patch -p1 < device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/af105ed.patch
 cd build
 patch -p1 < ../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/build/f057915.patch
-cd ../../..
+cd ..
 cd external/libavc
 patch -p1 < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/external_libavc/2c9d1d0.patch
 patch -p1 < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/external_libavc/25ccb87.patch
