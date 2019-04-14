@@ -1,0 +1,182 @@
+From 20f060172d32ce029f6ce013e6fd85a5063a7ea9 Mon Sep 17 00:00:00 2001
+From: Pawin Vongmasa <pawin@google.com>
+Date: Tue, 12 Dec 2017 01:56:40 -0800
+Subject: [PATCH] Prevent MediaPlayerService::Client's use-after-free
+
+Test: make cts -j123 && cts-tradefed run cts-dev -m \
+CtsMediaTestCases --compatibility:module-arg \
+CtsMediaTestCases:include-annotation:\
+android.platform.test.annotations.RequiresDevice
+
+Bug: 70546581
+Merged-In: Ia142a7735c6685eb67b2c00917c0ed5ea7e0da9e
+Change-Id: Ia142a7735c6685eb67b2c00917c0ed5ea7e0da9e
+(cherry picked from commit d27ad6bae3215db0ed174f5f036339c9515fbba7)
+(cherry picked from commit 028cf0973f928503e89124c3f6493a5226826ed9)
+(cherry picked from commit bd879f295ca3e3a12024cb72ec90b9c622f237a9)
+---
+
+diff --git a/include/media/MediaPlayerInterface.h b/include/media/MediaPlayerInterface.h
+index 2ef68cd..10a4e27 100644
+--- a/include/media/MediaPlayerInterface.h
++++ b/include/media/MediaPlayerInterface.h
+@@ -67,7 +67,7 @@
+ #define AUDIO_SINK_MIN_DEEP_BUFFER_DURATION_US 5000000
+ 
+ // callback mechanism for passing messages to MediaPlayer object
+-typedef void (*notify_callback_f)(void* cookie,
++typedef void (*notify_callback_f)(const wp<IMediaPlayer> &listener,
+         int msg, int ext1, int ext2, const Parcel *obj);
+ 
+ // abstract base class - use MediaPlayerInterface
+@@ -147,7 +147,7 @@
+         virtual String8     getParameters(const String8& /* keys */) { return String8::empty(); }
+     };
+ 
+-                        MediaPlayerBase() : mCookie(0), mNotify(0) {}
++                        MediaPlayerBase() : mClient(0), mNotify(0) {}
+     virtual             ~MediaPlayerBase() {}
+     virtual status_t    initCheck() = 0;
+     virtual bool        hardwareOutput() = 0;
+@@ -248,22 +248,22 @@
+     };
+ 
+     void        setNotifyCallback(
+-            void* cookie, notify_callback_f notifyFunc) {
++            const wp<IMediaPlayer> &client, notify_callback_f notifyFunc) {
+         Mutex::Autolock autoLock(mNotifyLock);
+-        mCookie = cookie; mNotify = notifyFunc;
++        mClient = client; mNotify = notifyFunc;
+     }
+ 
+     void        sendEvent(int msg, int ext1=0, int ext2=0,
+                           const Parcel *obj=NULL) {
+         notify_callback_f notifyCB;
+-        void* cookie;
++        wp<IMediaPlayer> client;
+         {
+             Mutex::Autolock autoLock(mNotifyLock);
+             notifyCB = mNotify;
+-            cookie = mCookie;
++            client = mClient;
+         }
+ 
+-        if (notifyCB) notifyCB(cookie, msg, ext1, ext2, obj);
++        if (notifyCB) notifyCB(client, msg, ext1, ext2, obj);
+     }
+ 
+     virtual status_t dump(int /* fd */, const Vector<String16>& /* args */) const {
+@@ -274,7 +274,7 @@
+     friend class MediaPlayerService;
+ 
+     Mutex               mNotifyLock;
+-    void*               mCookie;
++    wp<IMediaPlayer>    mClient;
+     notify_callback_f   mNotify;
+ };
+ 
+diff --git a/media/libmediaplayerservice/MediaPlayerFactory.cpp b/media/libmediaplayerservice/MediaPlayerFactory.cpp
+index 864dce2..b6a90ec 100644
+--- a/media/libmediaplayerservice/MediaPlayerFactory.cpp
++++ b/media/libmediaplayerservice/MediaPlayerFactory.cpp
+@@ -128,7 +128,7 @@
+ 
+ sp<MediaPlayerBase> MediaPlayerFactory::createPlayer(
+         player_type playerType,
+-        void* cookie,
++        const wp<IMediaPlayer> &client,
+         notify_callback_f notifyFunc,
+         pid_t pid) {
+     sp<MediaPlayerBase> p;
+@@ -154,7 +154,7 @@
+ 
+     init_result = p->initCheck();
+     if (init_result == NO_ERROR) {
+-        p->setNotifyCallback(cookie, notifyFunc);
++        p->setNotifyCallback(client, notifyFunc);
+     } else {
+         ALOGE("Failed to create player object of type %d, initCheck failed"
+               " (res = %d)", playerType, init_result);
+diff --git a/media/libmediaplayerservice/MediaPlayerFactory.h b/media/libmediaplayerservice/MediaPlayerFactory.h
+index e22a56f..6aedeb2 100644
+--- a/media/libmediaplayerservice/MediaPlayerFactory.h
++++ b/media/libmediaplayerservice/MediaPlayerFactory.h
+@@ -65,7 +65,7 @@
+                                      const sp<DataSource> &source);
+ 
+     static sp<MediaPlayerBase> createPlayer(player_type playerType,
+-                                            void* cookie,
++                                            const wp<IMediaPlayer> &client,
+                                             notify_callback_f notifyFunc,
+                                             pid_t pid);
+ 
+diff --git a/media/libmediaplayerservice/MediaPlayerService.cpp b/media/libmediaplayerservice/MediaPlayerService.cpp
+index bf50287..33eea28 100644
+--- a/media/libmediaplayerservice/MediaPlayerService.cpp
++++ b/media/libmediaplayerservice/MediaPlayerService.cpp
+@@ -1334,12 +1334,13 @@
+ }
+ 
+ void MediaPlayerService::Client::notify(
+-        void* cookie, int msg, int ext1, int ext2, const Parcel *obj)
++        const wp<IMediaPlayer> &listener, int msg, int ext1, int ext2, const Parcel *obj)
+ {
+-    Client* client = static_cast<Client*>(cookie);
+-    if (client == NULL) {
++    sp<IMediaPlayer> spListener = listener.promote();
++    if (spListener == NULL) {
+         return;
+     }
++    Client* client = static_cast<Client*>(spListener.get());
+ 
+     sp<IMediaPlayerClient> c;
+     {
+@@ -1377,7 +1378,7 @@
+     }
+ 
+     if (c != NULL) {
+-        ALOGV("[%d] notify (%p, %d, %d, %d)", client->mConnId, cookie, msg, ext1, ext2);
++        ALOGV("[%d] notify (%p, %d, %d, %d)", client->mConnId, spListener.get(), msg, ext1, ext2);
+         c->notify(msg, ext1, ext2, obj);
+     }
+ }
+@@ -1409,7 +1410,7 @@
+ #if CALLBACK_ANTAGONIZER
+ const int Antagonizer::interval = 10000; // 10 msecs
+ 
+-Antagonizer::Antagonizer(notify_callback_f cb, void* client) :
++Antagonizer::Antagonizer(notify_callback_f cb, const wp<IMediaPlayer> &client) :
+     mExit(false), mActive(false), mClient(client), mCb(cb)
+ {
+     createThread(callbackThread, this);
+diff --git a/media/libmediaplayerservice/MediaPlayerService.h b/media/libmediaplayerservice/MediaPlayerService.h
+index ccae822..53a78d3 100644
+--- a/media/libmediaplayerservice/MediaPlayerService.h
++++ b/media/libmediaplayerservice/MediaPlayerService.h
+@@ -68,7 +68,7 @@
+ #if CALLBACK_ANTAGONIZER
+ class Antagonizer {
+ public:
+-    Antagonizer(notify_callback_f cb, void* client);
++    Antagonizer(notify_callback_f cb, const wp<IMediaPlayer> &client);
+     void start() { mActive = true; }
+     void stop() { mActive = false; }
+     void kill();
+@@ -80,7 +80,7 @@
+     Condition           mCondition;
+     bool                mExit;
+     bool                mActive;
+-    void*               mClient;
++    wp<IMediaPlayer>    mClient;
+     notify_callback_f   mCb;
+ };
+ #endif
+@@ -359,7 +359,7 @@
+         void                    setDataSource_post(const sp<MediaPlayerBase>& p,
+                                                    status_t status);
+ 
+-        static  void            notify(void* cookie, int msg,
++        static  void            notify(const wp<IMediaPlayer> &cookie, int msg,
+                                        int ext1, int ext2, const Parcel *obj);
+ 
+                 pid_t           pid() const { return mPid; }

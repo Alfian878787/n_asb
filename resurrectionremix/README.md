@@ -1,1 +1,0 @@
-### Security Patches for RR 5.8.5
