@@ -1,0 +1,30 @@
+From 14744f4e0c410c05b13b4ca6e8d3b12465d59383 Mon Sep 17 00:00:00 2001
+From: Naveen Kumar P <naveenkumar.p@ittiam.com>
+Date: Mon, 18 Sep 2017 16:58:35 +0530
+Subject: [PATCH] Consume bytes for sps with unsupported resolution
+
+Bug: 65718319
+Test: ran POC before/after
+
+For an sps with unsupported resolution, consume the bytes.
+Otherwise application will feed the same sps again
+and again.
+
+Change-Id: I02295e813f37a963d7f6216bb8a7e86648485681
+(cherry picked from commit b1d2f31cfa81304460f577667a5332b53ec15404)
+---
+
+diff --git a/decoder/ihevcd_decode.c b/decoder/ihevcd_decode.c
+index 44abcef..45b25dd 100644
+--- a/decoder/ihevcd_decode.c
++++ b/decoder/ihevcd_decode.c
+@@ -641,8 +641,7 @@
+             continue;
+         }
+ 
+-        if((IVD_RES_CHANGED == ret) ||
+-           (IHEVCD_UNSUPPORTED_DIMENSIONS == ret))
++        if(IVD_RES_CHANGED == ret)
+         {
+             break;
+         }

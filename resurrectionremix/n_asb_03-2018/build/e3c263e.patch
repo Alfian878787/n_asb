@@ -1,0 +1,32 @@
+From e3c263ea2e44383d0b8628fe01694fd4e16991f5 Mon Sep 17 00:00:00 2001
+From: Tao Bao <tbao@google.com>
+Date: Tue, 03 Oct 2017 14:17:57 -0700
+Subject: [PATCH] Specify --max_timestamp when calling brillo_update_payload.
+
+Bug: 36232423
+Test: Create OTA packages (full, incremental and downgrade) with
+      ota_from_target_files.py; check the parameters passed down to
+      brillo_update_payload.
+Change-Id: I3af397f05fe16f4a9f0eb73e8272bac6afdc002a
+Merged-In: I3af397f05fe16f4a9f0eb73e8272bac6afdc002a
+(cherry picked from commit ed08bc4a2267c038ce4834fc65a6693a7e0223af)
+(cherry picked from commit a660c8c47889a0ed58fc0a9122c42707c6e4d6e8)
+(cherry picked from commit 9de91d94e8224314f856d0d3c884142ef5d71f44)
+---
+
+diff --git a/tools/releasetools/ota_from_target_files.py b/tools/releasetools/ota_from_target_files.py
+index 4c54cec..3d4cf3a 100755
+--- a/tools/releasetools/ota_from_target_files.py
++++ b/tools/releasetools/ota_from_target_files.py
+@@ -1339,6 +1339,11 @@
+          "--target_image", target_file]
+   if source_file is not None:
+     cmd.extend(["--source_image", source_file])
++  if OPTIONS.downgrade:
++    max_timestamp = GetBuildProp("ro.build.date.utc", OPTIONS.source_info_dict)
++  else:
++    max_timestamp = metadata["post-timestamp"]
++  cmd.extend(["--max_timestamp", max_timestamp])
+   p1 = common.Run(cmd, stdout=subprocess.PIPE)
+   p1.wait()
+   assert p1.returncode == 0, "brillo_update_payload generate failed"
