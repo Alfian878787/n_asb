@@ -1,0 +1,57 @@
+From 5185a1dde05da92dd5918ca5af17bcbec5141cac Mon Sep 17 00:00:00 2001
+From: rtmitchell@google.com <rtmitchell@google.com>
+Date: Thu, 05 Apr 2018 17:57:27 -0700
+Subject: [PATCH] ResStringPool: Fix security vulnerability
+
+Adds detection of attacker-modified size and data fields passed to
+ResStringPool::setTo(). These attacks are modified apks that AAPT would
+not normally generate. In the rare case this occurs, the installation
+cannot be allowed to continue.
+
+Bug: 71361168
+Bug: 71360999
+Test: run cts -m CtsAppSecurityHostTestCases \
+          -t android.appsecurity.cts.CorruptApkTests
+
+Change-Id: If7eb93a9e723b16c8a0556fc4e20006aa0391d57
+Merged-In: If7eb93a9e723b16c8a0556fc4e20006aa0391d57
+(cherry picked from commit 7e54c3f261d81316b75cb734075319108d8bc1d1)
+CVE-2018-9338, CVE-2018-9340
+---
+
+diff --git a/libs/androidfw/ResourceTypes.cpp b/libs/androidfw/ResourceTypes.cpp
+index 2919920..22fc290 100644
+--- a/libs/androidfw/ResourceTypes.cpp
++++ b/libs/androidfw/ResourceTypes.cpp
+@@ -458,6 +458,22 @@
+ 
+     uninit();
+ 
++    // The chunk must be at least the size of the string pool header.
++    if (size < sizeof(ResStringPool_header)) {
++        LOG_ALWAYS_FATAL("Bad string block: data size %zu is too small to be a string block", size);
++        return (mError=BAD_TYPE);
++    }
++
++    // The data is at least as big as a ResChunk_header, so we can safely validate the other
++    // header fields.
++    // `data + size` is safe because the source of `size` comes from the kernel/filesystem.
++    if (validate_chunk(reinterpret_cast<const ResChunk_header*>(data), sizeof(ResStringPool_header),
++                       reinterpret_cast<const uint8_t*>(data) + size,
++                       "ResStringPool_header") != NO_ERROR) {
++        LOG_ALWAYS_FATAL("Bad string block: malformed block dimensions");
++        return (mError=BAD_TYPE);
++    }
++
+     const bool notDeviceEndian = htods(0xf0) != 0xf0;
+ 
+     if (copyData || notDeviceEndian) {
+@@ -469,6 +485,8 @@
+         data = mOwnedData;
+     }
+ 
++    // The size has been checked, so it is safe to read the data in the ResStringPool_header
++    // data structure.
+     mHeader = (const ResStringPool_header*)data;
+ 
+     if (notDeviceEndian) {
