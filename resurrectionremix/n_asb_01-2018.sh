@@ -12,7 +12,7 @@ cd ..
 #cd ../..
 #cd system/media
 #git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/system_media/5269953.patch
-cd ../..
+#cd ../..
 cd system/core
 git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/system_core/50ec193.patch
 cd ../..
@@ -57,4 +57,4 @@ cd ../..
 #git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/external_libhevc/d88a2f7.patch
 #git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/external_libhevc/ea291b4.patch
 #git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/external_libhevc/fa44d35.patch
-cd ../..
+#cd ../..
