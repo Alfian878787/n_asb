@@ -1,0 +1,27 @@
+From 9a680d9d9d54cc0d0605cdc2fe34d559ed67300b Mon Sep 17 00:00:00 2001
+From: Rubin Xu <rubinxu@google.com>
+Date: Thu, 11 Jan 2018 10:59:19 +0000
+Subject: [PATCH] Add permission check to setAllowOnlyVpnForUids
+
+Bug: 63000005
+Test: runtest frameworks-net -c com.android.server.connectivity.VpnTest
+Test: cts-tradefed run cts-dev -m CtsDevicePolicyManagerTestCases -t com.android.cts.devicepolicy.MixedDeviceOwnerTest#testAlwaysOnVpnLockDown
+Merged-In: Ia1a82ee73d8617f3124032986fe6c09c14bf7752
+Change-Id: Ia1a82ee73d8617f3124032986fe6c09c14bf7752
+(cherry picked from commit f915e04d5010c4dfffad263fa70c1e412e856314)
+CVE-2017-13314
+---
+
+diff --git a/services/core/java/com/android/server/NetworkManagementService.java b/services/core/java/com/android/server/NetworkManagementService.java
+index 4099d93..10a24be 100644
+--- a/services/core/java/com/android/server/NetworkManagementService.java
++++ b/services/core/java/com/android/server/NetworkManagementService.java
+@@ -2068,6 +2068,8 @@
+     @Override
+     public void setAllowOnlyVpnForUids(boolean add, UidRange[] uidRanges)
+             throws ServiceSpecificException {
++        mContext.enforceCallingOrSelfPermission(android.Manifest.permission.NETWORK_STACK, TAG);
++
+         try {
+             mNetdService.networkRejectNonSecureVpn(add, uidRanges);
+         } catch (ServiceSpecificException e) {
