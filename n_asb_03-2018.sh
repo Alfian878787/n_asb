@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ../../../../..
+cd ../../../..
 cd build
 patch -p1 --forward < ../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/build/7293cf7.patch
 patch -p1 --forward < ../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/build/e3c263e.patch
@@ -21,15 +21,15 @@ patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/f
 git clean -f -d
 cd ../..
 cd system/bt
-patch -p1 --forward < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/1b2d48c.patch
-patch -p1 --forward < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/2f7820f.patch
-patch -p1 --forward < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/3ee82f7.patch
-patch -p1 --forward < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/9e46a39.patch
-patch -p1 --forward < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/7705a32.patch
-patch -p1 --forward < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/a5ececa.patch
-patch -p1 --forward < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/a9c3c6d.patch
-patch -p1 --forward < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/abab132.patch
-patch -p1 --forward < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/c7c5824.patch
-patch -p1 --forward < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/e0e8df0.patch
+patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/1b2d48c.patch
+patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/2f7820f.patch
+patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/3ee82f7.patch
+patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/9e46a39.patch
+patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/7705a32.patch
+patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/a5ececa.patch
+patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/a9c3c6d.patch
+patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/abab132.patch
+patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/c7c5824.patch
+patch -p1 --forward < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_03-2018/system_bt/e0e8df0.patch
 git clean -f -d
 cd ../..
