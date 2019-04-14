@@ -1,0 +1,42 @@
+From c60037bb65ac85c329ac64834ab35c14eefe02dd Mon Sep 17 00:00:00 2001
+From: Naveen Kumar P <naveenkumar.p@ittiam.com>
+Date: Thu, 06 Jul 2017 16:11:17 +0530
+Subject: [PATCH] Check if luma wd and ht are multiple of min cb size
+
+Bug: 65483665
+
+Instead of aligning width and height to 8, it is now
+checked for being a multiple of min CB size
+
+Change-Id: I99bf60e19d490fd06933aa01fa6a34f47fe58bb4
+(cherry picked from commit ccfd1ea5c4cf9cf0a55088506ae5f312663f8792)
+---
+
+diff --git a/decoder/ihevcd_parse_headers.c b/decoder/ihevcd_parse_headers.c
+index 6a9fe5e..8348fc6 100644
+--- a/decoder/ihevcd_parse_headers.c
++++ b/decoder/ihevcd_parse_headers.c
+@@ -1272,12 +1272,6 @@
+     if((0 >= ps_sps->i2_pic_width_in_luma_samples) || (0 >= ps_sps->i2_pic_height_in_luma_samples))
+         return IHEVCD_INVALID_PARAMETER;
+ 
+-    /* i2_pic_width_in_luma_samples and i2_pic_height_in_luma_samples
+-       should be multiples of min_cb_size. Here these are aligned to 8,
+-       i.e. smallest CB size */
+-    ps_sps->i2_pic_width_in_luma_samples = ALIGN8(ps_sps->i2_pic_width_in_luma_samples);
+-    ps_sps->i2_pic_height_in_luma_samples = ALIGN8(ps_sps->i2_pic_height_in_luma_samples);
+-
+     BITS_PARSE("pic_cropping_flag", value, ps_bitstrm, 1);
+     ps_sps->i1_pic_cropping_flag = value;
+ 
+@@ -1418,7 +1412,9 @@
+                     (ps_sps->i1_log2_diff_max_min_transform_block_size < 0) ||
+                     (ps_sps->i1_log2_max_transform_block_size > ps_sps->i1_log2_ctb_size) ||
+                     (ps_sps->i1_log2_ctb_size < 4) ||
+-                    (ps_sps->i1_log2_ctb_size > 6))
++                    (ps_sps->i1_log2_ctb_size > 6) ||
++                    (ps_sps->i2_pic_width_in_luma_samples % (1 << ps_sps->i1_log2_min_coding_block_size) != 0) ||
++                    (ps_sps->i2_pic_height_in_luma_samples % (1 << ps_sps->i1_log2_min_coding_block_size) != 0))
+     {
+         return IHEVCD_INVALID_PARAMETER;
+     }
