@@ -43,4 +43,4 @@ cd ../../..
 cd packages/providers/UserDictionaryProvider
 git apply --check < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_06-2018/packages_providers_UserDictionaryProvider/98b5ef9.diff
 cd ../../..
-git apply --check < ../../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_06-2018/5a3f230.diff
+git apply --check < device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_06-2018/5a3f230.diff

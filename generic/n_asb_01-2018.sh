@@ -1,6 +1,5 @@
 #!/bin/bash
 cd ../../../../..
-git apply --check < device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/af105ed.diff
 cd build
 git apply --check < ../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/build/f057915.diff
 cd ..
@@ -58,3 +57,4 @@ git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/ext
 git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/external_libhevc/ea291b4.diff
 git apply --check < ../../device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/external_libhevc/fa44d35.diff
 cd ../..
+git apply --check < device/CUBOT/NOTE_PLUS/patches/n_asb/n_asb_01-2018/af105ed.diff
