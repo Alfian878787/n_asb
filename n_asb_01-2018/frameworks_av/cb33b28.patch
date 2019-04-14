@@ -1,0 +1,38 @@
+From cb33b28bfd2f946f7f5bcc918b87feeb225c7c70 Mon Sep 17 00:00:00 2001
+From: Pawin Vongmasa <pawin@google.com>
+Date: Wed, 26 Jul 2017 16:42:54 -0700
+Subject: [PATCH] Fix the UAF bug caused by a dead stack variable
+
+The original code attempts to copy data from a location pointed to by a
+local variable that has gone out of scope. This CL moves the copy
+operation into the scope.
+
+Test: make cts -j123 && cts-tradefed run cts-dev -m \
+CtsMediaTestCases --compatibility:module-arg \
+CtsMediaTestCases:include-annotation:\
+android.platform.test.annotations.RequiresDevice
+
+Bug: 63773604
+Change-Id: I980630b6ac30875c2df65664668d4d6b7414f3a7
+---
+
+diff --git a/media/libstagefright/MPEG4Writer.cpp b/media/libstagefright/MPEG4Writer.cpp
+index 3e98c13..1422658 100644
+--- a/media/libstagefright/MPEG4Writer.cpp
++++ b/media/libstagefright/MPEG4Writer.cpp
+@@ -1684,10 +1684,12 @@
+             || !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_AAC)) {
+         if (mMeta->findData(kKeyESDS, &type, &data, &size)) {
+             ESDS esds(data, size);
+-            if (esds.getCodecSpecificInfo(&data, &size) != OK) {
+-                data = NULL;
+-                size = 0;
++            if (esds.getCodecSpecificInfo(&data, &size) == OK &&
++                    data != NULL &&
++                    copyCodecSpecificData((uint8_t*)data, size) == OK) {
++                mGotAllCodecSpecificData = true;
+             }
++            return;
+         }
+     }
+     if (data != NULL && copyCodecSpecificData((uint8_t *)data, size) == OK) {
