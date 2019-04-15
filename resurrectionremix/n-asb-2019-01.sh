@@ -9,6 +9,7 @@ cd ..
 #git fetch https://github.com/LineageOS/android_external_libnfc-nci refs/changes/00/238700/3 && git cherry-pick FETCH_HEAD
 #git fetch https://github.com/LineageOS/android_external_libnfc-nci refs/changes/01/238701/3 && git cherry-pick FETCH_HEAD
 #cd ../..
+#cd external/wpa_supplicant_8
 #git fetch https://github.com/LineageOS/android_external_wpa_supplicant_8 refs/changes/06/238506/1 && git cherry-pick FETCH_HEAD
 #cd ../..
 cd packages/apps/Contacts 
