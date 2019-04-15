@@ -1,6 +1,6 @@
 Security Patches for customs ROMs
 ===========
-Device Tree for LineageOS 14.1
+LineageOS 14.1 n-asb security patches 
 ------------------
 Security Patches for other custom los-based roms like RessurectionRemix, CrDroid, etc.
 they'e outdated and missing some important securiy fixes
