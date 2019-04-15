@@ -20,8 +20,8 @@ git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/15/235
 cd ../..
 cd frameworks/base
 git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/16/235816/1 && git cherry-pick FETCH_HEAD
-git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/17/235817/2 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/94/236694/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/17/235817/2 && git cherry-pick FETCH_HEAD
 cd ../..
 #cd bootable/recovery
 #git fetch https://github.com/LineageOS/android_bootable_recovery refs/changes/57/243457/1 && git cherry-pick FETCH_HEAD
