@@ -45,6 +45,8 @@ git fetch https://github.com/LineageOS/android_external_aac refs/changes/92/2023
 git fetch https://github.com/LineageOS/android_external_aac refs/changes/93/202393/1 && git cherry-pick FETCH_HEAD
 cd ../..
 cd external/libhevc
+git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/98/202398/1 && git cherry-pick FETCH_HEAD
+git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/99/202399/1 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/00/202400/1 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/01/202401/1 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/02/202402/1 && git cherry-pick FETCH_HEAD
@@ -53,7 +55,5 @@ git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/04/
 git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/05/202405/1 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/06/202406/1 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/07/202407/1 && git cherry-pick FETCH_HEAD
-git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/98/202398/1 && git cherry-pick FETCH_HEAD
-git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/99/202399/1 && git cherry-pick FETCH_HEAD
 cd ../..
 git fetch https://github.com/LineageOS/android refs/changes/49/202449/1 && git cherry-pick FETCH_HEAD

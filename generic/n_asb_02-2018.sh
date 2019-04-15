@@ -4,9 +4,9 @@ cd build
 git fetch https://github.com/LineageOS/android_build refs/changes/90/205490/1 && git cherry-pick FETCH_HEAD
 cd ..
 cd external/libavc
+git fetch https://github.com/LineageOS/android_external_libavc refs/changes/81/205481/1 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_external_libavc refs/changes/71/208871/1 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_external_libavc refs/changes/72/208872/1 && git cherry-pick FETCH_HEAD
-git fetch https://github.com/LineageOS/android_external_libavc refs/changes/81/205481/1 && git cherry-pick FETCH_HEAD
 cd ../..
 cd external/sonivox
 git fetch https://github.com/LineageOS/android_external_sonivox refs/changes/88/205488/1 && git cherry-pick FETCH_HEAD
