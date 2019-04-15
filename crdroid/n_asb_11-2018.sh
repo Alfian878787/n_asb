@@ -14,12 +14,12 @@ cd ..
 #git fetch https://github.com/LineageOS/android_external_aac refs/changes/40/234640/2 && git cherry-pick FETCH_HEAD
 #git fetch https://github.com/LineageOS/android_external_aac refs/changes/41/234641/2 && git cherry-pick FETCH_HEAD
 #git fetch https://github.com/LineageOS/android_external_aac refs/changes/42/234642/3 && git cherry-pick FETCH_HEAD
-cd ../..
+#cd ../..
 cd frameworks/av
 git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/58/233858/1 && git cherry-pick FETCH_HEAD
 cd ../..
 cd frameworks/base
-git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/47/233847/1 && git cherry-pick FETCH_HEAD
+#git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/47/233847/1 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/59/233859/2 && git cherry-pick FETCH_HEAD
 cd ../..
 #cd system/bt

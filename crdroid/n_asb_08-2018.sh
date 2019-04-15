@@ -48,7 +48,7 @@ git fetch https://github.com/LineageOS/android_packages_apps_Settings refs/chang
 git fetch https://github.com/LineageOS/android_packages_apps_Settings refs/changes/69/222869/1 && git cherry-pick FETCH_HEAD
 cd ../../..
 cd packages/apps/Messaging
-git fetch https://github.com/LineageOS/android_packages_apps_Messaging refs/changes/36/222636/2 && git cherry-pick FETCH_HEAD
+#git fetch https://github.com/LineageOS/android_packages_apps_Messaging refs/changes/36/222636/2 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_packages_apps_Messaging refs/changes/37/222637/2 && git cherry-pick FETCH_HEAD
 cd ../../..
 #git fetch https://github.com/LineageOS/android refs/changes/21/222921/1 && git cherry-pick FETCH_HEAD
