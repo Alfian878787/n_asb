@@ -6,7 +6,7 @@ Ressurection Remix 5.8.5 security patches
 adds security patch for RR 5.8.5 
 
 - git clone the patches into device/cubot/note_s/patches/n_asb (or use your own vendor and device name)
-- you need apply patch by patch. start with n_asb_01-2018.sh and go next with n_asb_02-2018.sh etc
+- you need apply patch by patch. Start with n_asb_01-2018.sh and follow up with n_asb_02-2018.sh etc
 
 the way to do:
 ```
