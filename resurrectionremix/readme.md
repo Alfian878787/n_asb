@@ -5,5 +5,7 @@ Ressurection Remix 5.8.5 security patches
 
 adds security patch for RR 5.8.5 
 
-- they're already modified and only apply the files which are outdated (and modified) by RR Team
-- all other patches are not needed because RR forks a lot of newest LineageOS Repo
+- git clone the patches into device/cubot/note_s/patches/n_asb (or use your own vendor and device name)
+- you need apply patch by patch. start with n_asb_01-2018.sh and go next with n_asb_02-2018.sh etc
+
+Tested it with different mediateks (MT6580 with 3.18.19 and MT6737t on 3.18.35)
