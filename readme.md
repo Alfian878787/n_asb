@@ -1,8 +1,10 @@
 Security Patches for customs ROMs
 ===========
-LineageOS 14.1 n-asb security patches 
+LineageOS 14.1 n-asb security patches
 ------------------
-Security Patches for other custom los-based roms like RessurectionRemix, CrDroid, etc.
-they'e outdated and missing some important securiy fixes
+Security Patches for other los-based custom roms like RessurectionRemix, CrDroid, DotOS, etc.
 
-we can add now all important security fixes since 2018-01-05 up to 2019-04-05
+They're outdated and miss important monthly security fixes
+we can add now all important security fixes directly in source code
+
+status: security patch level up to 2019-04-05
