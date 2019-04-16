@@ -23,6 +23,7 @@ cd device/cubot/note_s/patches/n_asb/resurrectionremix
 cd device/cubot/note_s/patches/n_asb/resurrectionremix
 
 . n_asb_03-2018.sh
+
 ...
 ```
 
