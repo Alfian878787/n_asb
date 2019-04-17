@@ -27,9 +27,9 @@ cd ../..
 #git fetch https://github.com/LineageOS/android_system_bt refs/changes/59/220459/1 && git cherry-pick FETCH_HEAD
 #git fetch https://github.com/LineageOS/android_system_bt refs/changes/60/220460/1 && git cherry-pick FETCH_HEAD
 #cd ../..
-cd system/media
-git fetch https://github.com/LineageOS/android_system_media refs/changes/28/220428/1 && git cherry-pick FETCH_HEAD
-cd ../..
+#cd system/media
+#git fetch https://github.com/LineageOS/android_system_media refs/changes/28/220428/1 && git cherry-pick FETCH_HEAD
+#cd ../..
 #cd packages/apps/Bluetooth
 #git fetch https://github.com/LineageOS/android_packages_apps_Bluetooth refs/changes/61/220461/1 && git cherry-pick FETCH_HEAD
 #cd ../../..
