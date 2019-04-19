@@ -26,7 +26,7 @@ cd ..
 #cd ../..
 cd frameworks/av
 git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/54/217054/3 && git cherry-pick FETCH_HEAD
-git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/77/217077/2 && git cherry-pick FETCH_HEAD
+#git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/77/217077/2 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/84/217084/2 && git cherry-pick FETCH_HEAD
 cd ../..
 cd frameworks/base
