@@ -12,15 +12,15 @@ the way to do:
 ```
 git clone https://github.com/seluce/n_asb device/cubot/note_s/patches/n_asb
 
-cd device/cubot/note_s/patches/n_asb/resurrectionremix
+cd device/cubot/note_s/patches/n_asb/crdroid
 
 . n_asb_08-2018.sh
 
-cd device/cubot/note_s/patches/n_asb/resurrectionremix
+cd device/cubot/note_s/patches/n_asb/crdroid
 
 . n_asb_09-2018.sh
 
-cd device/cubot/note_s/patches/n_asb/resurrectionremix
+cd device/cubot/note_s/patches/n_asb/crdroid
 
 . n_asb_010-2018.sh
 

@@ -9,9 +9,9 @@ cd ..
 #cd external/libhevc
 #git fetch https://github.com/LineageOS/android_external_libhevc refs/changes/09/243409/1 && git cherry-pick FETCH_HEAD
 #cd ../..
-cd external/sqlite
-git fetch https://github.com/LineageOS/android_external_sqlite refs/changes/10/243410/1 && git cherry-pick FETCH_HEAD
-cd ../..
+#cd external/sqlite
+#git fetch https://github.com/LineageOS/android_external_sqlite refs/changes/10/243410/1 && git cherry-pick FETCH_HEAD
+#cd ../..
 #cd external/libnfc-nci
 #git fetch https://github.com/LineageOS/android_external_libnfc-nci refs/changes/11/243411/1 && git cherry-pick FETCH_HEAD
 #git fetch https://github.com/LineageOS/android_external_libnfc-nci refs/changes/12/243412/1 && git cherry-pick FETCH_HEAD
