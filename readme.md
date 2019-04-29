@@ -8,8 +8,8 @@ We can add now all important security fixes directly in source code
 
 **supported nougat roms:**
 - [x] Resurrection Remix 5.8.5
-- [x] /e/ 0.1 *alias* eelo 0.1
 - [x] DotOS 1.2
+- [x] /e/ 0.1 
 
 **planned nougat roms:**
 - [ ] CrDroid 3.8.9 
