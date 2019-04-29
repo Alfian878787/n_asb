@@ -1,26 +1,11 @@
 #!/bin/bash
 CURRENT_DIR=${PWD}
 
-echo -e "\n add security patches for CrDroid 3.8.9"
+echo -e "\n add security patches for /e/ 0.1"
 sleep 1
 echo -e "\n start patching... wait some minutes"
 sleep 2
 
-bash n_asb_08-2018.sh
-
-cd $CURRENT_DIR
-bash n_asb_09-2018.sh
-
-cd $CURRENT_DIR
-bash n_asb_10-2018.sh
-
-cd $CURRENT_DIR
-bash n_asb_11-2018.sh
-
-cd $CURRENT_DIR
-bash n_asb_12-2018.sh
-
-cd $CURRENT_DIR
 bash n_asb_01-2019.sh
 
 cd $CURRENT_DIR
