@@ -22,7 +22,7 @@ cd device/cubot/note_s/patches/n_asb/crdroid
 
 cd device/cubot/note_s/patches/n_asb/crdroid
 
-. n_asb_010-2018.sh
+. n_asb_10-2018.sh
 
 ...
 ```
