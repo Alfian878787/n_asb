@@ -15,8 +15,6 @@ git clone https://github.com/seluce/n_asb device/cubot/note_s/patches/n_asb
 cd device/cubot/note_s/patches/n_asb/crdroid
 
 . apply-patches.sh
-
-...
 ```
 
-test branch
+Tested it with different mediateks (MT6580 with 3.18.19 and MT6737t on 3.18.35)
