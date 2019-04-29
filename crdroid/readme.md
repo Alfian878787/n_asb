@@ -14,15 +14,7 @@ git clone https://github.com/seluce/n_asb device/cubot/note_s/patches/n_asb
 
 cd device/cubot/note_s/patches/n_asb/crdroid
 
-. n_asb_08-2018.sh
-
-cd device/cubot/note_s/patches/n_asb/crdroid
-
-. n_asb_09-2018.sh
-
-cd device/cubot/note_s/patches/n_asb/crdroid
-
-. n_asb_10-2018.sh
+. apply-patches.sh
 
 ...
 ```
