@@ -6,17 +6,14 @@ They're outdated and important monthly security fixes and bug fixes are not incl
 
 We can add now almost all important security and feature patches directly in source code
 
-**supported nougat los based roms:**
+**supported nougat roms:**
+> Resurrection Remix 5.8.5
 
-```sh
-Resurrection Remix 5.8.5
-CrDroid 3.8.9 
-DotOS 1.2
-/e/ 0.1 
-```
+> CrDroid 3.8.9 
 
+> DotOS 1.2
+
+> /e/ 0.1 
 
 **security patch level:**
-```sh
-PLATFORM_SECURITY_PATCH := 2019-04-05
-```
+> PLATFORM_SECURITY_PATCH := 2019-04-05
