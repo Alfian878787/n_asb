@@ -8,8 +8,11 @@ We can add now almost all important security and feature patches directly in sou
 
 **supported nougat roms:**
 > Resurrection Remix 5.8.5
+
 > CrDroid 3.8.9 
+
 > DotOS 1.2
+
 > /e/ 0.1 
 
 **planned nougat roms:**
