@@ -16,6 +16,7 @@ We can add now almost all important security and feature patches directly in sou
 > /e/ 0.1 
 
 **planned nougat roms:**
-- [ ] should be enough
+> ...
 
-status: security patch level up to 2019-04-05
+**security patch level**
+> 2019-04-05
