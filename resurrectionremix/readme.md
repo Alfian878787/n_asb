@@ -8,7 +8,7 @@ adds security patch for Resurrection Remix 5.8.5
 - git clone the patches into device/cubot/note_s/patches/n_asb (or use your own vendor and device name)
 - use the apply-patch file to add all security patches. you need to run the script in the directory
 
-the way to do:
+**the way to do:**
 ```
 git clone https://github.com/seluce/n_asb device/cubot/note_s/patches/n_asb
 
