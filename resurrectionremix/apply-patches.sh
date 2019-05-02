@@ -55,7 +55,7 @@ cd $CURRENT_DIR
 bash n_asb_04-2019.sh
 
 sleep 1
-echo -e "\n all patches are included"
+echo -e "\n all patches are included now"
 sleep 2
-echo -e "\n security patch level: 2019-04-05"
-echo -e "\n by seluce"
+echo -e "\n bump security patch level to 2019-04-05"
+echo -e "\n script by seluce"
