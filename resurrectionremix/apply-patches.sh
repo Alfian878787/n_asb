@@ -1,7 +1,7 @@
 #!/bin/bash
 CURRENT_DIR=${PWD}
 
-echo -e "\n add security patches for CrDroid 3.8.9"
+echo -e "\n add security patches for Resurrection Remix 5.8.5"
 sleep 1
 echo -e "\n start patching. Wait some minutes..."
 sleep 2
