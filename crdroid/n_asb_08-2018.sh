@@ -12,9 +12,9 @@ cd ..
 #cd external/libavc
 #git fetch https://github.com/LineageOS/android_external_libavc refs/changes/65/222865/1 && git cherry-pick FETCH_HEAD
 #cd ../..
-cd frameworks/av
-git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/66/222866/1 && git cherry-pick FETCH_HEAD
-cd ../..
+#cd frameworks/av
+#git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/66/222866/1 && git cherry-pick FETCH_HEAD
+#cd ../..
 cd frameworks/base
 git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/25/222625/1 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/26/222626/1 && git cherry-pick FETCH_HEAD

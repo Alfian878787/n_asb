@@ -15,10 +15,10 @@ cd ..
 cd external/skia
 git fetch https://github.com/LineageOS/android_external_skia refs/changes/53/232153/1 && git cherry-pick FETCH_HEAD
 cd ../..
-cd frameworks/av
-git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/14/231214/1 && git cherry-pick FETCH_HEAD
-git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/40/230840/2 && git cherry-pick FETCH_HEAD
-cd ../..
+#cd frameworks/av
+#git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/14/231214/1 && git cherry-pick FETCH_HEAD
+#git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/40/230840/2 && git cherry-pick FETCH_HEAD
+#cd ../..
 cd frameworks/base
 git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/30/231230/2 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/31/231231/2 && git cherry-pick FETCH_HEAD

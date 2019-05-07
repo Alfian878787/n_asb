@@ -17,6 +17,9 @@ bash n_asb_03-2019.sh
 cd $CURRENT_DIR
 bash n_asb_04-2019.sh
 
+cd $CURRENT_DIR
+bash n_asb_05-2019.sh
+
 sleep 1
 echo -e "\n all patches are included now"
 sleep 2

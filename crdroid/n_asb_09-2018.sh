@@ -12,10 +12,10 @@ cd ..
 #cd external/neven
 #git fetch https://github.com/LineageOS/android_external_neven refs/changes/07/227407/1 && git cherry-pick FETCH_HEAD
 #cd ../..
-cd frameworks/av
+#cd frameworks/av
 #git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/23/227323/1 && git cherry-pick FETCH_HEAD
-git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/24/227324/1 && git cherry-pick FETCH_HEAD
-cd ../..
+#git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/24/227324/1 && git cherry-pick FETCH_HEAD
+#cd ../..
 cd frameworks/base
 git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/21/227321/1 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/22/227322/2 && git cherry-pick FETCH_HEAD
