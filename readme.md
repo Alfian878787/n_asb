@@ -16,4 +16,4 @@ We can add now almost all important security and feature patches directly in sou
 > /e/ 0.1 
 
 **PLATFORM_SECURITY_PATCH**
-> PLATFORM_SECURITY_PATCH := **2019-04-05**
+> PLATFORM_SECURITY_PATCH := **2019-05-05**
